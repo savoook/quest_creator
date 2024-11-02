@@ -28,3 +28,12 @@ jobs:
 
       - name: Запуск тестов
         run: mvn test
+
+      - name: Логин в GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u savoook --password-stdin
+
+      - name: Сборка Docker образа
+        run: docker build -t ghcr.io/savoook/guest_creator:latest .
+
+      - name: Публикация Docker образа
+        run: docker push ghcr.io/savoook/guest_creator:latest

@@ -1,6 +1,6 @@
 spring:
-    application:
-        name:quest_creator
+  application:
+    name:quest_creator
 #
 #    docker:
 #        compose:
