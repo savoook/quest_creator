@@ -1,0 +1,30 @@
+name: Java CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Проверка кода
+        uses: actions/checkout@v2
+
+      - name: Установка JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '21'
+          distribution: ''
+
+      - name: Сборка с Maven
+        run: mvn clean install
+
+      - name: Запуск тестов
+        run: mvn test

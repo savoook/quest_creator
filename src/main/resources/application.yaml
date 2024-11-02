@@ -1,0 +1,7 @@
+spring:
+    application:
+        name:quest_creator
+#
+#    docker:
+#        compose:
+#            enabled:false
