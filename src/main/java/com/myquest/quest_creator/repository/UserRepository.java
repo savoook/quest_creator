@@ -5,6 +5,7 @@ import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository extends Repository<User, Integer> {
 
@@ -12,4 +13,6 @@ public interface UserRepository extends Repository<User, Integer> {
 
     @Query("select * from user")
     List<User> getAll();
+
+    Optional<User> findById(Integer id);
 }

@@ -6,3 +6,7 @@ spring:
     url: 'jdbc:mysql://delta.mtw.ru/db_32026_1?prepareThreshold=0'
     username: user32026_1
     password: pwuser32026_1
+
+logging:
+  level:
+    org.springframework: DEBUG

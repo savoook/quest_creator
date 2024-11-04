@@ -2,14 +2,14 @@ package com.myquest.quest_creator.model;
 
 import com.myquest.quest_creator.controller.request.CreateUserRequest;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
+@Table(name = "user")
 @Getter
 @Builder
-@Table(name = "user")
 public class User {
     @Id
     private Integer id;
@@ -18,6 +18,8 @@ public class User {
     private Integer mode;
     private String email;
     private Integer prefLang;
+    @MappedCollection(idColumn = "user_id")
+    private Quest quest;
 
     public static User fromCreateRequest(CreateUserRequest request) {
         return User.builder()

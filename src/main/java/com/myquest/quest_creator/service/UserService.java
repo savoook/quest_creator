@@ -24,4 +24,10 @@ public class UserService {
 
         return userRepository.save(User.fromCreateRequest(request));
     }
+
+    public User findById(Integer id) {
+
+        return userRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("пользователь с таким id {} не найден"));
+    }
 }
