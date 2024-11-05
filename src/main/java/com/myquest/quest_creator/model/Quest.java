@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.List;
+import java.util.Set;
 
 @Table(name = "quest")
 @Data
@@ -24,9 +24,9 @@ public class Quest {
     @Builder.Default
     Integer defaultStage = 1;
     @MappedCollection(idColumn = "quest_id")
-    List<QuestLang> langs;
+    Set<QuestLang> langs;
     @MappedCollection(idColumn = "quest_id")
-    List<Stage> stages;
+    Set<Stage> stages;
     Integer defaultLang;
 
     public static Quest fromCreateRequest(CreateQuestRequest request) {
@@ -35,7 +35,6 @@ public class Quest {
                 .name(request.name())
                 .image(request.image())
                 .defaultStage(request.defaultStage())
-                .langs(request.langs())
                 .defaultLang(request.defaultLang())
                 .build();
     }

@@ -2,14 +2,14 @@ package com.myquest.quest_creator.controller.request;
 
 import com.myquest.quest_creator.model.QuestLang;
 
-import java.util.List;
+import java.util.Set;
 
 public record CreateQuestRequest(
         Integer userId,
         String name,
         String image,
         Integer defaultStage,
-        List<QuestLang> langs,
+        Set<QuestLang> langs,
         Integer defaultLang
 ) {
 }
