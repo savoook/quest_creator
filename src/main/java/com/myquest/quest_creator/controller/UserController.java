@@ -26,6 +26,12 @@ public class UserController {
         return HttpUtils.ok(userService.getAll());
     }
 
+    @GetMapping(path = "/session/{sessionId}")
+    @Operation(summary = "Получить  пользователея по id сессии")
+    public ResponseEntity<DataResult<User>> getUserBySession(@PathVariable Integer sessionId) {
+        return HttpUtils.ok(userService.findBySessionId(sessionId));
+    }
+
     @PostMapping(path = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Создать пользователя")
     public ResponseEntity<DataResult<User>> create(@RequestBody CreateUserRequest request) {

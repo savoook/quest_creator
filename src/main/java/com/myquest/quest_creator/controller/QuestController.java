@@ -2,6 +2,7 @@ package com.myquest.quest_creator.controller;
 
 import com.myquest.quest_creator.controller.request.CreateQuestRequest;
 import com.myquest.quest_creator.model.Quest;
+import com.myquest.quest_creator.model.Stage;
 import com.myquest.quest_creator.service.QuestService;
 import com.myquest.quest_creator.utils.DataResult;
 import com.myquest.quest_creator.utils.HttpUtils;
@@ -29,11 +30,18 @@ public class QuestController {
         return HttpUtils.ok(questService.getAll());
     }
 
-    @GetMapping(path = "{userId}")
+    @GetMapping(path = "/user/{userId}")
     @Operation(summary = "Получить все квесты по id юзера")
     public ResponseEntity<DataResult<List<Quest>>> findByUserId(@PathVariable Integer userId) {
 
         return HttpUtils.ok(questService.findByUserId(userId));
+    }
+
+    @GetMapping(path = "/stages/{id}")
+    @Operation(summary = "Получить все стейджи по id")
+    public ResponseEntity<DataResult<List<Stage>>> findAllStageseById(@PathVariable Integer id) {
+
+        return HttpUtils.ok(questService.findAllStageseById(id));
     }
 
     @PostMapping(path = "/create", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.Set;
+
 @Table(name = "user")
 @Getter
 @Builder
@@ -19,7 +21,9 @@ public class User {
     private String email;
     private Integer prefLang;
     @MappedCollection(idColumn = "user_id")
-    private Quest quest;
+    private Set<Quest> quest;
+    @MappedCollection(idColumn = "user_id")
+    private Set<Session> session;
 
     public static User fromCreateRequest(CreateUserRequest request) {
         return User.builder()
