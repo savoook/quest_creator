@@ -1,3 +1,10 @@
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: estonia13
+    keyStoreType: PKCS12
+
 spring:
   application:
     name: quest_creator
